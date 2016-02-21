@@ -7,6 +7,9 @@
 
 ## Write a short comment describing this function
 ##The makeCacheMatrix function below recieves a square matrix, x, as input and returns a special "matrix" object that can cache it's inverse.
+##The special matrix returned by this function is actually a list of 4 functions set, get, setinverse, and get inverse. For this to work, the makeCacheMatrix
+##function relys on the ability of list object to access not only the functions it contains, but also access the entire environment defined when the 
+##makeCacheMatrix function is called.
 
 makeCacheMatrix <- function(x = matrix()) {
   
@@ -28,7 +31,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## Write a short comment describing this function
 ##The cacheSolve function recieves the special matrix, x (returned by the makeCacheMatrix function) and checks to see if inverse of the special matrix
-##has been calculated. If it has been calculated it returns the inverse, otherwise it calculates the inverse and stores it for later use.
+##has been calculated using the getinverse function stored within the special matrix. If it has been calculated it returns the inverse (inv), otherwise
+##it calculates the inverse (inv) and stores it for later use.
 
 cacheSolve <- function(x, ...) {
   inv <- x$getinverse()
